@@ -1,0 +1,448 @@
+/* ============================================
+   MOODIFY - Responsive Styles
+   Mobile & Tablet Optimization
+   Developed by Bima Haris
+   ============================================ */
+
+/* --- Tablet: 1150px and below --- */
+@media (max-width: 1150px) {
+    .app {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    .rightbar {
+        display: none;
+    }
+
+    .player {
+        left: 220px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .hero-art {
+        width: 130px;
+        height: 130px;
+        font-size: 52px;
+    }
+}
+
+/* --- Mobile: 720px and below --- */
+@media (max-width: 720px) {
+    .app {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 20px 15px 130px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .greeting h1 {
+        font-size: 21px;
+    }
+
+    .greeting p {
+        font-size: 12px;
+    }
+
+    .search {
+        width: 42px;
+        padding: 10px;
+        font-size: 0;
+        cursor: pointer;
+    }
+
+    .search:focus {
+        width: 170px;
+        font-size: 13px;
+        cursor: text;
+    }
+
+    .hero {
+        min-height: 210px;
+        padding: 21px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+        max-width: 250px;
+    }
+
+    .hero p {
+        font-size: 12px;
+        max-width: 220px;
+    }
+
+    .hero-art {
+        width: 100px;
+        height: 100px;
+        right: -5px;
+        bottom: 8px;
+        font-size: 40px;
+        opacity: 0.5;
+    }
+
+    .mood-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .mood {
+        padding: 14px 8px;
+    }
+
+    .mood span {
+        font-size: 24px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .section-head {
+        margin-top: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .section-head h2 {
+        font-size: 18px;
+    }
+
+    /* --- Mobile Navigation --- */
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        z-index: 6;
+        bottom: 63px;
+        left: 0;
+        right: 0;
+        justify-content: space-around;
+        background: #10121df5;
+        border-top: 1px solid var(--line);
+        padding: 8px 4px;
+        backdrop-filter: blur(10px);
+    }
+
+    .mobile-nav button {
+        background: none;
+        color: var(--muted);
+        font-size: 10px;
+        display: grid;
+        gap: 2px;
+        justify-items: center;
+        padding: 4px 12px;
+    }
+
+    .mobile-nav button span {
+        font-size: 17px;
+    }
+
+    .mobile-nav button.active {
+        color: var(--purple);
+    }
+
+    /* --- Player on Mobile --- */
+    .player {
+        left: 0;
+        right: 0;
+        padding: 9px 12px;
+        gap: 10px;
+        bottom: 0;
+    }
+
+    .now-playing {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .now-playing .cover {
+        width: 39px;
+        height: 39px;
+        min-width: 39px;
+        font-size: 16px;
+    }
+
+    .now-playing b {
+        font-size: 12px;
+    }
+
+    .now-playing small {
+        font-size: 11px;
+    }
+
+    .progress-wrap,
+    .volume {
+        display: none;
+    }
+
+    .player-controls {
+        gap: 12px;
+    }
+
+    .player-controls button {
+        font-size: 16px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .play-main {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 18px !important;
+    }
+
+    /* --- Posts on Mobile --- */
+    .post {
+        padding: 12px;
+    }
+
+    .post-head {
+        gap: 10px;
+    }
+
+    .post-copy {
+        font-size: 13px;
+    }
+
+    .shared-track {
+        padding: 10px;
+    }
+
+    .post-actions {
+        gap: 12px;
+    }
+
+    .post-actions button {
+        font-size: 12px;
+    }
+
+    /* --- Modal on Mobile --- */
+    .modal {
+        width: 95%;
+        padding: 20px;
+        margin: 0 10px;
+    }
+
+    .modal-head h2 {
+        font-size: 18px;
+    }
+
+    /* --- Playlist on Mobile --- */
+    .playlist-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .playlist-cover {
+        width: 140px;
+        height: 140px;
+        font-size: 48px;
+    }
+
+    .playlist-info h1 {
+        font-size: 24px;
+    }
+
+    .playlist-stats {
+        justify-content: center;
+    }
+
+    /* --- Settings on Mobile --- */
+    .settings-section {
+        padding: 16px;
+    }
+
+    .spotify-connect {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    /* --- YouTube Player on Mobile --- */
+    .youtube-player-container {
+        width: calc(100% - 20px);
+        right: 10px;
+        left: 10px;
+        bottom: 130px;
+    }
+
+    /* --- Track List on Mobile --- */
+    .track-item {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .track-item .cover {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 14px;
+    }
+
+    .track-item .track-info b {
+        font-size: 13px;
+    }
+
+    .track-item .track-info small {
+        font-size: 11px;
+    }
+
+    /* --- Rightbar content shown in mobile feed --- */
+    .rightbar-mobile {
+        display: block;
+        padding: 0 0 20px;
+    }
+
+    .rightbar-mobile .section-head {
+        margin-top: 20px;
+    }
+
+    /* --- Toast on Mobile --- */
+    .toast {
+        bottom: 100px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        text-align: center;
+    }
+
+    .toast.show {
+        transform: none;
+    }
+}
+
+/* --- Small Mobile: 400px and below --- */
+@media (max-width: 400px) {
+    .greeting h1 {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding: 16px;
+        min-height: 180px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 11px;
+    }
+
+    .hero-art {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+
+    .mood-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .music-card {
+        display: flex;
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .music-card .cover {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        aspect-ratio: unset;
+        margin-bottom: 0;
+        font-size: 24px;
+    }
+
+    .music-card h3 {
+        font-size: 13px;
+    }
+
+    .music-card p {
+        font-size: 11px;
+    }
+
+    .card-actions {
+        margin-top: auto;
+    }
+}
+
+/* --- Landscape Mobile --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .hero-art {
+        display: none;
+    }
+
+    .player {
+        padding: 6px 16px;
+    }
+
+    .mobile-nav {
+        bottom: 50px;
+        padding: 4px 4px;
+    }
+
+    .mobile-nav button {
+        font-size: 9px;
+        padding: 2px 8px;
+    }
+
+    .mobile-nav button span {
+        font-size: 15px;
+    }
+}
+
+/* --- Print Styles --- */
+@media print {
+    .sidebar,
+    .rightbar,
+    .player,
+    .mobile-nav,
+    .modal-backdrop,
+    .toast,
+    .youtube-player-container {
+        display: none !important;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main {
+        padding: 0;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}

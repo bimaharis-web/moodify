@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090a10">
+    <title>Pengaturan — MOODIFY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark">♫</div>
+            moodify<span style="color:var(--pink)">.</span>
+        </div>
+        <div>
+            <div class="nav-label">MENU</div>
+            <nav class="nav">
+                <button data-page="home" onclick="window.location.href='index.html'"><span class="ico">⌂</span> Beranda</button>
+                <button data-page="discover" onclick="window.location.href='index.html#discover'"><span class="ico">⌕</span> Discover</button>
+                <button data-page="feed" onclick="window.location.href='index.html#feed'"><span class="ico">◉</span> Teman & Feed</button>
+                <button data-page="library" onclick="window.location.href='index.html#library'"><span class="ico">▤</span> Koleksi Saya</button>
+            </nav>
+        </div>
+        <div>
+            <div class="nav-label">PERSONAL</div>
+            <nav class="nav">
+                <button data-page="profile" onclick="window.location.href='profile.html'"><span class="ico">◎</span> Profil Saya</button>
+                <button data-page="settings" class="active"><span class="ico">⚙</span> Pengaturan</button>
+            </nav>
+        </div>
+        <div class="sidebar-bottom mini-profile">
+            <div class="avatar">BH</div>
+            <div>
+                <b style="font-size:13px">Bima Haris</b>
+                <small style="display:block;font-size:11px;color:var(--muted)">@bimaharis</small>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <header class="topbar">
+            <div class="greeting">
+                <h1 id="pageTitle">Pengaturan</h1>
+                <p id="pageSub">Kelola akun dan koneksi musik</p>
+            </div>
+        </header>
+
+        <!-- Spotify Connection -->
+        <div class="settings-section">
+            <h3>🎵 Koneksi Spotify</h3>
+            
+            <!-- Connection Status -->
+            <div class="spotify-connect">
+                <div class="spotify-icon">♫</div>
+                <div class="spotify-info">
+                    <div style="display:flex;align-items:center;gap:10px">
+                        <b>Spotify</b>
+                        <span class="spotify-status-badge" id="spotifyStatusBadge">Not Configured</span>
+                    </div>
+                    <small>Hubungkan akun Spotify untuk melihat profil, playlist, dan lagu favorit</small>
+                </div>
+                <button class="connect-btn" id="spotifyConnectBtn" onclick="Spotify.connect()">
+                    Connect Spotify
+                </button>
+                <button class="disconnect-btn" id="spotifyDisconnectBtn" onclick="Spotify.disconnect()" style="display:none">
+                    Disconnect
+                </button>
+            </div>
+            
+            <!-- User Profile (shown after connect) -->
+            <div id="spotifyProfile" style="display:none;margin-top:16px;padding:16px;background:var(--panel2);border-radius:var(--radius-sm)">
+                <div style="display:flex;gap:12px;align-items:center">
+                    <div class="avatar a2" id="spotifyAvatar">?</div>
+                    <div style="flex:1">
+                        <b id="spotifyName">-</b>
+                        <small class="muted" id="spotifyEmail">-</small>
+                    </div>
+                    <a id="spotifyProfileLink" href="#" target="_blank" rel="noopener" class="open-spotify-btn" style="font-size:12px;padding:6px 12px">
+                        Open Profile ↗
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Setup Instructions (shown when not configured) -->
+            <div id="spotifySetupInstructions" style="margin-top:16px;padding:14px;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
+                <p style="font-size:13px;color:var(--muted);margin:0">
+                    💡 <strong>Cara menghubungkan Spotify:</strong><br>
+                    1. Buat aplikasi di <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noopener">developer.spotify.com/dashboard</a><br>
+                    2. Salin <strong>Client ID</strong> ke file <code style="background:var(--panel3);padding:2px 6px;border-radius:4px">config.js</code><br>
+                    3. Set <strong>Redirect URI</strong> ke: <code style="background:var(--panel3);padding:2px 6px;border-radius:4px" id="redirectUriDisplay">-</code><br>
+                    4. Klik "Connect Spotify" di atas<br>
+                    5. Otorisasi aplikasi di halaman Spotify
+                </p>
+            </div>
+            
+            <!-- Demo Mode Panel (shown when not configured) -->
+            <div id="spotifyDemoPanel" style="margin-top:16px">
+                <div class="demo-label" style="margin-bottom:12px">
+                    <span>🎵 Mode Demo</span>
+                    <p>Preview fitur Spotify — hubungkan akun Anda untuk data asli</p>
+                </div>
+                
+                <!-- Demo Playlists -->
+                <h4 style="margin:16px 0 12px;font-size:15px">Playlist Demo</h4>
+                <div id="spotifyPlaylistsContainer"></div>
+                
+                <!-- Playlist Details (hidden by default) -->
+                <div id="spotifyPlaylistDetails" style="display:none;margin-top:16px"></div>
+            </div>
+            
+            <!-- Real Playlists (shown when connected) -->
+            <div id="spotifyRealPlaylists" style="display:none;margin-top:16px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                    <h4 style="margin:0;font-size:15px">Playlist Anda</h4>
+                    <button class="secondary" onclick="Spotify.displayUserPlaylists()" style="font-size:12px;padding:6px 12px">
+                        🔄 Refresh
+                    </button>
+                </div>
+                <div id="spotifyRealPlaylistsContainer"></div>
+                
+                <!-- Playlist Details -->
+                <div id="spotifyRealPlaylistDetails" style="display:none;margin-top:16px"></div>
+            </div>
+        </div>
+
+        <!-- YouTube Settings -->
+        <div class="settings-section">
+            <h3>▶️ YouTube</h3>
+            
+            <div class="settings-row">
+                <div>
+                    <label>YouTube IFrame Player</label>
+                    <small>Pemutar musik menggunakan YouTube IFrame API</small>
+                </div>
+                <span style="color:var(--cyan);font-size:13px">✓ Aktif</span>
+            </div>
+            
+            <div class="settings-row">
+                <div>
+                    <label>YouTube Data API</label>
+                    <small>Pencarian video musik (opsional, butuh API key)</small>
+                </div>
+                <span id="youtubeApiStatus" style="color:var(--muted);font-size:13px">Belum dikonfigurasi</span>
+            </div>
+            
+            <div style="margin-top:12px;padding:14px;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
+                <p style="font-size:13px;color:var(--muted);margin:0">
+                    💡 <strong>Cara mengaktifkan YouTube Data API:</strong><br>
+                    1. Buat project di <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Google Cloud Console</a><br>
+                    2. Aktifkan YouTube Data API v3<br>
+                    3. Buat API Key dan salin ke <code style="background:var(--panel3);padding:2px 6px;border-radius:4px">config.js</code>
+                </p>
+            </div>
+        </div>
+
+        <!-- App Settings -->
+        <div class="settings-section">
+            <h3>⚙ Pengaturan Aplikasi</h3>
+            
+            <div class="settings-row">
+                <div>
+                    <label>Mode Demo</label>
+                    <small>Fitur demo aktif. Hubungkan API untuk fitur lengkap.</small>
+                </div>
+                <span style="color:var(--purple);font-size:13px">Aktif</span>
+            </div>
+            
+            <div class="settings-row">
+                <div>
+                    <label>Penyimpanan Lokal</label>
+                    <small>Data disimpan di browser (localStorage)</small>
+                </div>
+                <span style="color:var(--cyan);font-size:13px">Aktif</span>
+            </div>
+            
+            <div class="settings-row">
+                <div>
+                    <label>Hapus Data Lokal</label>
+                    <small>Hapus semua data yang disimpan di browser</small>
+                </div>
+                <button class="secondary" onclick="clearLocalData()" style="font-size:12px;padding:6px 14px">Hapus data</button>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="settings-section">
+            <h3>ℹ Tentang MOODIFY</h3>
+            
+            <div class="settings-row">
+                <div>
+                    <label>Versi</label>
+                    <small>Tahap 1 — Brand & UI</small>
+                </div>
+                <span style="color:var(--purple);font-size:13px">v1.0.0</span>
+            </div>
+            
+            <div class="settings-row">
+                <div>
+                    <label>Developer</label>
+                    <small>Developed by Bima Haris</small>
+                </div>
+                <a href="https://bimaharis.my.id" target="_blank" rel="noopener" style="color:var(--purple);font-size:13px">bimaharis.my.id ↗</a>
+            </div>
+            
+            <div class="settings-row">
+                <div>
+                    <label>Teknologi</label>
+                    <small>HTML5, CSS3, Vanilla JavaScript</small>
+                </div>
+                <span style="color:var(--muted);font-size:13px">No frameworks</span>
+            </div>
+        </div>
+
+        <!-- Developer Credit -->
+        <div class="dev-credit">
+            MOODIFY — Your Music. Your Mood. Your Story.<br>
+            Developed by <a href="https://bimaharis.my.id" target="_blank" rel="noopener">Bima Haris</a>
+        </div>
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="rightbar">
+        <h3>📋 Status Integrasi</h3>
+        <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--panel2);border-radius:var(--radius-sm)">
+                <span style="font-size:18px">🎵</span>
+                <div style="flex:1">
+                    <b style="font-size:13px">iTunes Search API</b>
+                    <small style="display:block;color:var(--muted);font-size:11px">Pencarian musik</small>
+                </div>
+                <span style="color:var(--cyan);font-size:11px">✓</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--panel2);border-radius:var(--radius-sm)">
+                <span style="font-size:18px">▶️</span>
+                <div style="flex:1">
+                    <b style="font-size:13px">YouTube IFrame API</b>
+                    <small style="display:block;color:var(--muted);font-size:11px">Pemutar musik</small>
+                </div>
+                <span style="color:var(--cyan);font-size:11px">✓</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--panel2);border-radius:var(--radius-sm)">
+                <span style="font-size:18px">🟢</span>
+                <div style="flex:1">
+                    <b style="font-size:13px">Spotify Web API</b>
+                    <small style="display:block;color:var(--muted);font-size:11px">OAuth PKCE</small>
+                </div>
+                <span id="spotifyApiStatus" style="color:var(--muted);font-size:11px">—</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--panel2);border-radius:var(--radius-sm)">
+                <span style="font-size:18px">🔶</span>
+                <div style="flex:1">
+                    <b style="font-size:13px">Supabase</b>
+                    <small style="display:block;color:var(--muted);font-size:11px">Backend (Tahap 4)</small>
+                </div>
+                <span style="color:var(--muted);font-size:11px">—</span>
+            </div>
+        </div>
+        
+        <div class="right-card" style="margin-top:24px">
+            <div class="eyebrow">NEXT STEPS</div>
+            <h3 style="font-size:17px;margin:7px 0">Tahap 4: Backend (Supabase)</h3>
+            <p>Integrasi autentikasi dan database untuk fitur sosial yang lengkap.</p>
+        </div>
+    </aside>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- JAVASCRIPT -->
+<script src="js/config.js" onerror="document.write('<script src=js/config.example.js><\/script>')"></script>
+<script src="js/app.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/music-sources.js"></script>
+<script src="js/music-search.js"></script>
+<script src="js/yt-search.js"></script>
+<script src="js/youtube-player.js"></script>
+<script src="js/spotify.js"></script>
+<script src="js/playlist.js"></script>
+<script src="js/social.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+function clearLocalData() {
+    if (!confirm('Yakin ingin menghapus semua data lokal? Tindakan ini tidak dapat dibatalkan.')) return;
+    
+    localStorage.removeItem('moodify_playlists');
+    localStorage.removeItem('moodify_posts');
+    localStorage.removeItem('moodify_recentlyPlayed');
+    localStorage.removeItem('moodify_session');
+    localStorage.removeItem('moodify_spotify_tokens');
+    
+    notify('🗑 Data lokal berhasil dihapus');
+    setTimeout(() => location.reload(), 1000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Update redirect URI display
+    const redirectUriDisplay = document.getElementById('redirectUriDisplay');
+    if (redirectUriDisplay) {
+        const redirectUri = (typeof CONFIG !== 'undefined' && CONFIG.SPOTIFY_REDIRECT_URI) 
+            ? CONFIG.SPOTIFY_REDIRECT_URI 
+            : window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '') + '/settings.html';
+        redirectUriDisplay.textContent = redirectUri;
+    }
+    
+    // Check Spotify configuration
+    const status = Spotify.getStatus();
+    const demoPanel = document.getElementById('spotifyDemoPanel');
+    const setupInstructions = document.getElementById('spotifySetupInstructions');
+    const realPlaylists = document.getElementById('spotifyRealPlaylists');
+    
+    if (status.isConfigured) {
+        // Hide setup instructions if configured
+        if (setupInstructions) setupInstructions.style.display = 'none';
+        // Hide demo panel if configured
+        if (demoPanel) demoPanel.style.display = 'none';
+    } else {
+        // Show demo mode
+        if (demoPanel) demoPanel.style.display = 'block';
+        // Load demo playlists
+        Spotify.displayUserPlaylists();
+    }
+    
+    // Update YouTube status
+    if (typeof CONFIG !== 'undefined' && CONFIG.YOUTUBE_API_KEY !== 'YOUR_YOUTUBE_API_KEY_HERE') {
+        const youtubeStatus = $('youtubeApiStatus');
+        if (youtubeStatus) youtubeStatus.textContent = '✓ Aktif';
+        if (youtubeStatus) youtubeStatus.style.color = 'var(--cyan)';
+    }
+});
+
+// Update UI when Spotify connection changes (after OAuth callback)
+function onSpotifyConnected() {
+    const demoPanel = document.getElementById('spotifyDemoPanel');
+    const setupInstructions = document.getElementById('spotifySetupInstructions');
+    const realPlaylists = document.getElementById('spotifyRealPlaylists');
+    const profileLink = document.getElementById('spotifyProfileLink');
+    
+    // Hide demo and setup
+    if (demoPanel) demoPanel.style.display = 'none';
+    if (setupInstructions) setupInstructions.style.display = 'none';
+    
+    // Show real playlists
+    if (realPlaylists) realPlaylists.style.display = 'block';
+    
+    // Update profile link
+    if (profileLink && Spotify.userProfile) {
+        profileLink.href = Spotify.userProfile.external_urls?.spotify || '#';
+    }
+    
+    // Load real playlists
+    Spotify.displayUserPlaylists();
+}
+
+// Update UI when Spotify disconnects
+function onSpotifyDisconnected() {
+    const demoPanel = document.getElementById('spotifyDemoPanel');
+    const setupInstructions = document.getElementById('spotifySetupInstructions');
+    const realPlaylists = document.getElementById('spotifyRealPlaylists');
+    
+    // Show demo/setup
+    if (demoPanel) demoPanel.style.display = 'block';
+    if (setupInstructions) setupInstructions.style.display = 'block';
+    
+    // Hide real playlists
+    if (realPlaylists) realPlaylists.style.display = 'none';
+    
+    // Load demo playlists
+    Spotify.displayUserPlaylists();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090a10">
+    <title>Profil — MOODIFY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark">♫</div>
+            moodify<span style="color:var(--pink)">.</span>
+        </div>
+        <div>
+            <div class="nav-label">MENU</div>
+            <nav class="nav">
+                <button data-page="home" onclick="window.location.href='index.html'"><span class="ico">⌂</span> Beranda</button>
+                <button data-page="discover" onclick="window.location.href='index.html#discover'"><span class="ico">⌕</span> Discover</button>
+                <button data-page="feed" onclick="window.location.href='index.html#feed'"><span class="ico">◉</span> Teman & Feed</button>
+                <button data-page="library" onclick="window.location.href='index.html#library'"><span class="ico">▤</span> Koleksi Saya</button>
+            </nav>
+        </div>
+        <div>
+            <div class="nav-label">PERSONAL</div>
+            <nav class="nav">
+                <button data-page="profile" class="active"><span class="ico">◎</span> Profil Saya</button>
+                <button data-page="settings" onclick="window.location.href='settings.html'"><span class="ico">⚙</span> Pengaturan</button>
+            </nav>
+        </div>
+        <div class="sidebar-bottom mini-profile">
+            <div class="avatar">AR</div>
+            <div>
+                <b style="font-size:13px">Ari Ramadhan</b>
+                <small style="display:block;font-size:11px;color:var(--muted)">@arivibes</small>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <header class="topbar">
+            <div class="greeting">
+                <h1 id="pageTitle">Profil Saya</h1>
+                <p id="pageSub">Your music. Your mood. Your story.</p>
+            </div>
+            <div class="top-actions">
+                <input class="search" id="searchInput" placeholder="⌕  Cari lagu..." 
+                       onkeydown="if(event.key==='Enter')searchMusic()">
+            </div>
+        </header>
+
+        <!-- Profile Header -->
+        <div class="post" style="padding:28px">
+            <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+                <div class="avatar" style="width:80px;height:80px;font-size:28px">AR</div>
+                <div style="flex:1">
+                    <h2 style="margin:0;font-size:24px">Ari Ramadhan</h2>
+                    <div class="muted">@arivibes · Jakarta</div>
+                    <p style="margin:8px 0 0;font-size:14px;color:var(--text-secondary)">Collecting songs, moments & memories. ✨</p>
+                    <div style="display:flex;gap:24px;margin-top:16px">
+                        <div><b style="font-size:18px">3</b><div class="muted" style="font-size:12px">Posts</div></div>
+                        <div><b style="font-size:18px">128</b><div class="muted" style="font-size:12px">Followers</div></div>
+                        <div><b style="font-size:18px">96</b><div class="muted" style="font-size:12px">Following</div></div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:10px">
+                    <button class="secondary" onclick="openModal('editProfile')">✎ Edit profil</button>
+                    <button class="secondary" onclick="Auth.logout()">⏻ Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Favorite Songs -->
+        <div class="section-head">
+            <div>
+                <h2>Lagu Favorit</h2>
+                <p>Lagu yang paling sering kamu putar</p>
+            </div>
+        </div>
+        <div class="cards" id="favoriteCards"></div>
+
+        <!-- My Playlists -->
+        <div class="section-head">
+            <div>
+                <h2>Playlist Saya</h2>
+                <p>Koleksi playlist yang kamu buat</p>
+            </div>
+            <button class="text-btn" onclick="window.location.href='index.html#library'">Lihat semua →</button>
+        </div>
+        <div class="cards" id="myPlaylists"></div>
+
+        <!-- Posts -->
+        <div class="section-head">
+            <div>
+                <h2>Vibe yang dibagikan</h2>
+                <p>Post musik dari kamu</p>
+            </div>
+        </div>
+        <div class="feed" id="profileFeed"></div>
+
+        <!-- Developer Credit -->
+        <div class="dev-credit">
+            MOODIFY — Your Music. Your Mood. Your Story.<br>
+            Developed by <a href="https://bimaharis.my.id" target="_blank" rel="noopener">Bima Haris</a>
+        </div>
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="rightbar">
+        <h3>🔥 Lagi ramai</h3>
+        <div id="rightTrending"></div>
+        <div class="right-card" style="margin-top:24px">
+            <div class="eyebrow">SHARE YOUR VIBE</div>
+            <h3 style="font-size:17px;margin:7px 0">Bagikan musik favoritmu.</h3>
+            <p>Ceritakan lagu yang sedang mewakili suasana hatimu.</p>
+            <button onclick="openModal('share')">Bagikan sekarang →</button>
+        </div>
+    </aside>
+</div>
+
+<!-- BOTTOM PLAYER -->
+<div class="player">
+    <div class="now-playing">
+        <div class="cover c4" id="playerCover">♫</div>
+        <div style="min-width:0">
+            <b id="playerTitle">Pilih lagu untuk mulai</b>
+            <small id="playerArtist">MOODIFY player</small>
+        </div>
+    </div>
+    <div class="player-controls">
+        <button onclick="playPrevious()">⏮</button>
+        <button class="play-main" id="playToggle" onclick="togglePlay()">▶</button>
+        <button onclick="playNext()">⏭</button>
+    </div>
+    <div class="progress-wrap">
+        <span>0:00</span>
+        <div class="progress"><i></i></div>
+        <span>3:45</span>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+        <div class="modal-head">
+            <h2 id="modalTitle">Edit profil</h2>
+            <button class="close" onclick="closeModal()">✕</button>
+        </div>
+        <div id="modalBody"></div>
+        <div class="modal-actions">
+            <button class="secondary" onclick="closeModal()">Batal</button>
+            <button class="primary" id="modalSubmit">Simpan</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- JAVASCRIPT -->
+<script src="js/config.js" onerror="document.write('<script src=js/config.example.js><\/script>')"></script>
+<script src="js/app.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/music-sources.js"></script>
+<script src="js/music-search.js"></script>
+<script src="js/yt-search.js"></script>
+<script src="js/youtube-player.js"></script>
+<script src="js/spotify.js"></script>
+<script src="js/playlist.js"></script>
+<script src="js/social.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Render favorite songs (saved songs)
+    const favoriteContainer = $('favoriteCards');
+    if (favoriteContainer) {
+        const savedSongs = DEMO_SONGS.filter(s => AppState.savedSongs.has(s.id));
+        favoriteContainer.innerHTML = savedSongs.length > 0 ? 
+            savedSongs.map(song => songCardHTML(song)).join('') :
+            '<div class="empty">Belum ada lagu favorit. Simpan lagu untuk melihatnya di sini.</div>';
+    }
+    
+    // Render playlists
+    const playlistContainer = $('myPlaylists');
+    if (playlistContainer) {
+        renderPlaylists();
+    }
+    
+    // Render profile feed
+    if (typeof Social !== 'undefined') {
+        Social.renderProfileFeed();
+    }
+    
+    // Render right trending
+    if (typeof renderRightTrending === 'function') {
+        renderRightTrending();
+    }
+});
+</script>
+</body>
+</html>
