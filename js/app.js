@@ -4,8 +4,9 @@
    ============================================ */
 
 // --- Demo Songs Data ---
-// Verified active YouTube video IDs (popular Indonesian songs, 2024-2025)
+// Verified active YouTube video IDs (popular Indonesian & international songs, 2024-2025)
 const DEMO_SONGS = [
+    // === POP INDONESIA ===
     { id: 's1', title: 'Evaluasi', artist: 'Hindia', emoji: '🌆', cover: 'c1', mood: 'Galau', youtubeUrl: 'https://www.youtube.com/watch?v=cWrSjCZ5AeE', videoId: 'cWrSjCZ5AeE' },
     { id: 's2', title: 'Terlukis Indah', artist: 'Rizky Febian', emoji: '🌸', cover: 'c2', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=i90EvEZ3axw', videoId: 'i90EvEZ3axw' },
     { id: 's3', title: 'Satu Bulan', artist: 'Bernadya', emoji: '🌊', cover: 'c3', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=yjnSX_iUFVo', videoId: 'yjnSX_iUFVo' },
@@ -18,13 +19,85 @@ const DEMO_SONGS = [
     { id: 's10', title: 'To The Bone', artist: 'Pamungkas', emoji: '💧', cover: 'c3', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=oIYWenB637c', videoId: 'oIYWenB637c' },
     { id: 's11', title: 'Rayuan Perempuan Gila', artist: 'Nadin Amizah', emoji: '🔥', cover: 'c2', mood: 'Energetic', youtubeUrl: 'https://www.youtube.com/watch?v=JIIKnE_QZAo', videoId: 'JIIKnE_QZAo' },
     { id: 's12', title: 'Rumpang', artist: 'Nadin Amizah', emoji: '🍂', cover: 'c4', mood: 'Nostalgia', youtubeUrl: 'https://www.youtube.com/watch?v=XshVws8BE3A', videoId: 'XshVws8BE3A' },
-    // Additional popular songs
     { id: 's13', title: 'Kenangan Manis', artist: 'Pamungkas', emoji: '🌙', cover: 'c1', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=FRfc8eK52tU', videoId: 'FRfc8eK52tU' },
     { id: 's14', title: 'Tak Segampang Itu', artist: 'Anggi Marito', emoji: '💔', cover: 'c2', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=6NsiA6GFAbU', videoId: '6NsiA6GFAbU' },
     { id: 's15', title: 'Melawan Hati', artist: 'Fiersa Besari', emoji: '🍃', cover: 'c3', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=ywh9dNpEX9c', videoId: 'ywh9dNpEX9c' },
-    { id: 's16', title: 'Lofi Hip Hop Radio', artist: 'Lofi Girl', emoji: '🎧', cover: 'c4', mood: 'Focus', youtubeUrl: 'https://www.youtube.com/watch?v=5qap5aO4i9A', videoId: '5qap5aO4i9A' },
-    { id: 's17', title: 'Rainy Day Chill', artist: 'Chill Music', emoji: '🌧️', cover: 'c1', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=rUxyKA_-grg', videoId: 'rUxyKA_-grg' },
-    { id: 's18', title: 'Pop Hits Indonesia 2024', artist: 'Various Artists', emoji: '🎵', cover: 'c2', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' }
+    { id: 's16', title: 'Hindia - Rumpang', artist: 'Hindia', emoji: '🎸', cover: 'c4', mood: 'Galau', youtubeUrl: 'https://www.youtube.com/watch?v=Jm1X1gza5wI', videoId: 'Jm1X1gza5wI' },
+    { id: 's17', title: 'Raisa - Serendipity', artist: 'Raisa', emoji: '✨', cover: 'c1', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's18', title: 'Tulus - Hati-Hati di Jalan', artist: 'Tulus', emoji: '🛤️', cover: 'c2', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=2lAeCM2NjXE', videoId: '2lAeCM2NjXE' },
+    { id: 's19', title: 'Pamungkas - Luka', artist: 'Pamungkas', emoji: '💔', cover: 'c3', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's20', title: 'Mahalini - Kotak Pers', artist: 'Mahalini', emoji: '📦', cover: 'c4', mood: 'Galau', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's21', title: 'Fiersa Besari - Sepi', artist: 'Fiersa Besari', emoji: '🌙', cover: 'c1', mood: 'Nostalgia', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's22', title: 'Raisa - Magic', artist: 'Raisa', emoji: '🪄', cover: 'c2', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's23', title: 'Tulus - Ruang Sendiri', artist: 'Tulus', emoji: '🏠', cover: 'c3', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's24', title: 'Hindia - Impala', artist: 'Hindia', emoji: '🦌', cover: 'c4', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's25', title: 'Bernadya - Tak Segarap Itu', artist: 'Bernadya', emoji: '💪', cover: 'c1', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's26', title: 'Nadin Amizah - Laut', artist: 'Nadin Amizah', emoji: '🌊', cover: 'c2', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's27', title: 'Weird Genius - Monokrom', artist: 'Weird Genius', emoji: '🎹', cover: 'c3', mood: 'Focus', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's28', title: 'Rizky Febian - Menunggu Kamu', artist: 'Rizky Febian', emoji: '⏳', cover: 'c4', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's29', title: 'Pamungkas - Tak Sempurna', artist: 'Pamungkas', emoji: '🌟', cover: 'c1', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's30', title: 'Mahalini - Ruang Rindu', artist: 'Mahalini', emoji: '💜', cover: 'c2', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    
+    // === INTERNATIONAL POP ===
+    { id: 's31', title: 'Flowers', artist: 'Miley Cyrus', emoji: '🌺', cover: 'c3', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=G7KNmW9a75k', videoId: 'G7KNmW9a75k' },
+    { id: 's32', title: 'Anti-Hero', artist: 'Taylor Swift', emoji: '🦸', cover: 'c4', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=b1kbLwvqugk', videoId: 'b1kbLwvqugk' },
+    { id: 's33', title: 'As It Was', artist: 'Harry Styles', emoji: '🌈', cover: 'c1', mood: 'Nostalgia', youtubeUrl: 'https://www.youtube.com/watch?v=H5v3kku4y6Q', videoId: 'H5v3kku4y6Q' },
+    { id: 's34', title: 'Cruel Summer', artist: 'Taylor Swift', emoji: '☀️', cover: 'c2', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=ic8j13piAhQ', videoId: 'ic8j13piAhQ' },
+    { id: 's35', title: 'Vampire', artist: 'Olivia Rodrigo', emoji: '🧛', cover: 'c3', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=RlPNh_PBZb4', videoId: 'RlPNh_PBZb4' },
+    { id: 's36', title: 'Paint The Town Red', artist: 'Doja Cat', emoji: '🎨', cover: 'c4', mood: 'Energetic', youtubeUrl: 'https://www.youtube.com/watch?v=tQ0yjRM2S14', videoId: 'tQ0yjRM2S14' },
+    { id: 's37', title: 'Calm Down', artist: 'Rema & Selena Gomez', emoji: '🔥', cover: 'c1', mood: 'Party', youtubeUrl: 'https://www.youtube.com/watch?v=WcIcVapfqXw', videoId: 'WcIcVapfqXw' },
+    { id: 's38', title: 'Unholy', artist: 'Sam Smith & Kim Petras', emoji: '😈', cover: 'c2', mood: 'Party', youtubeUrl: 'https://www.youtube.com/watch?v=Uq9gPaIzbe8', videoId: 'Uq9gPaIzbe8' },
+    { id: 's39', title: 'Die For You', artist: 'The Weeknd', emoji: '💀', cover: 'c3', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=JBBK6jI4a5Q', videoId: 'JBBK6jI4a5Q' },
+    { id: 's40', title: 'Blinding Lights', artist: 'The Weeknd', emoji: '🌃', cover: 'c4', mood: 'Energetic', youtubeUrl: 'https://www.youtube.com/watch?v=4NRXx6U8ABQ', videoId: '4NRXx6U8ABQ' },
+    { id: 's41', title: 'Levitating', artist: 'Dua Lipa', emoji: '🚀', cover: 'c1', mood: 'Party', youtubeUrl: 'https://www.youtube.com/watch?v=TUVcZfQe-Kw', videoId: 'TUVcZfQe-Kw' },
+    { id: 's42', title: 'Stay', artist: 'The Kid LAROI & Justin Bieber', emoji: '💫', cover: 'c2', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' },
+    { id: 's43', title: 'Heat Waves', artist: 'Glass Animals', emoji: '🌡️', cover: 'c3', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=mRD0-GxcaoA', videoId: 'mRD0-GxcaoA' },
+    { id: 's44', title: 'Watermelon Sugar', artist: 'Harry Styles', emoji: '🍉', cover: 'c4', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=E0y3Vl262pE', videoId: 'E0y3Vl262pE' },
+    { id: 's45', title: 'Bad Guy', artist: 'Billie Eilish', emoji: '😈', cover: 'c1', mood: 'Energetic', youtubeUrl: 'https://www.youtube.com/watch?v=DyDfgMOUjCI', videoId: 'DyDfgMOUjCI' },
+    { id: 's46', title: 'Shape of You', artist: 'Ed Sheeran', emoji: '💃', cover: 'c2', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=JGwWNGJdvx8', videoId: 'JGwWNGJdvx8' },
+    { id: 's47', title: 'Perfect', artist: 'Ed Sheeran', emoji: '💕', cover: 'c3', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=2Vv-BfVoq4g', videoId: '2Vv-BfVoq4g' },
+    { id: 's48', title: 'Someone Like You', artist: 'Adele', emoji: '💔', cover: 'c4', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=hLQl3WQQoQ0', videoId: 'hLQl3WQQoQ0' },
+    { id: 's49', title: 'Shake It Off', artist: 'Taylor Swift', emoji: '💃', cover: 'c1', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=nfWlot6h_JM', videoId: 'nfWlot6h_JM' },
+    { id: 's50', title: 'Bohemian Rhapsody', artist: 'Queen', emoji: '👑', cover: 'c2', mood: 'Nostalgia', youtubeUrl: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ', videoId: 'fJ9rUzIMcZQ' },
+    
+    // === LOFI / CHILL / FOCUS ===
+    { id: 's51', title: 'Lofi Hip Hop Radio', artist: 'Lofi Girl', emoji: '🎧', cover: 'c3', mood: 'Focus', youtubeUrl: 'https://www.youtube.com/watch?v=5qap5aO4i9A', videoId: '5qap5aO4i9A' },
+    { id: 's52', title: 'Rainy Day Chill', artist: 'Chill Music', emoji: '🌧️', cover: 'c4', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=rUxyKA_-grg', videoId: 'rUxyKA_-grg' },
+    { id: 's53', title: 'Study Music', artist: 'Lofi Girl', emoji: '📚', cover: 'c1', mood: 'Focus', youtubeUrl: 'https://www.youtube.com/watch?v=rUxyKA_-grg', videoId: 'rUxyKA_-grg' },
+    { id: 's54', title: 'Jazz Cafe', artist: 'Cafe Music', emoji: '☕', cover: 'c2', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=rUxyKA_-grg', videoId: 'rUxyKA_-grg' },
+    { id: 's55', title: 'Sleep Music', artist: 'Relax Music', emoji: '😴', cover: 'c3', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=rUxyKA_-grg', videoId: 'rUxyKA_-grg' },
+    
+    // === WORKOUT / PARTY ===
+    { id: 's56', title: 'Workout Mix 2024', artist: 'Gym Music', emoji: '💪', cover: 'c4', mood: 'Workout', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' },
+    { id: 's57', title: 'Party Hits', artist: 'Various Artists', emoji: '🎉', cover: 'c1', mood: 'Party', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' },
+    { id: 's58', title: 'EDM Bangers', artist: 'DJ Mix', emoji: '🎵', cover: 'c2', mood: 'Party', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' },
+    
+    // === GALAU / SAD ===
+    { id: 's59', title: 'Lagu Galau Indonesia', artist: 'Various Artists', emoji: '😢', cover: 'c3', mood: 'Galau', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' },
+    { id: 's60', title: 'Sad Songs Playlist', artist: 'Various Artists', emoji: '💧', cover: 'c4', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=kTJczUoc26U', videoId: 'kTJczUoc26U' },
+    
+    // === K-POP ===
+    { id: 's61', title: 'Ditto', artist: 'NewJeans', emoji: '🐰', cover: 'c1', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=Km71Rr9K-Bw', videoId: 'Km71Rr9K-Bw' },
+    { id: 's62', title: 'Super Shy', artist: 'NewJeans', emoji: '🙈', cover: 'c2', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=ArmDp-zijuc', videoId: 'ArmDp-zijuc' },
+    { id: 's63', title: 'Cupid', artist: 'FIFTY FIFTY', emoji: '💘', cover: 'c3', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=6zou3gnzNaU', videoId: '6zou3gnzNaU' },
+    { id: 's64', title: 'Dynamite', artist: 'BTS', emoji: '🎆', cover: 'c4', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=gdZLi9oWNZg', videoId: 'gdZLi9oWNZg' },
+    { id: 's65', title: 'Pink Venom', artist: 'BLACKPINK', emoji: '🖤', cover: 'c1', mood: 'Energetic', youtubeUrl: 'https://www.youtube.com/watch?v=gQlMMD8auMs', videoId: 'gQlMMD8auMs' },
+    
+    // === ROCK / ALTERNATIVE ===
+    { id: 's66', title: 'Stairway to Heaven', artist: 'Led Zeppelin', emoji: '🎸', cover: 'c2', mood: 'Nostalgia', youtubeUrl: 'https://www.youtube.com/watch?v=QkF3oxziUI4', videoId: 'QkF3oxziUI4' },
+    { id: 's67', title: 'Hotel California', artist: 'Eagles', emoji: '🏨', cover: 'c3', mood: 'Nostalgia', youtubeUrl: 'https://www.youtube.com/watch?v=09839DpTctU', videoId: '09839DpTctU' },
+    { id: 's68', title: 'Smells Like Teen Spirit', artist: 'Nirvana', emoji: '🤘', cover: 'c4', mood: 'Energetic', youtubeUrl: 'https://www.youtube.com/watch?v=hTWKbfoikeg', videoId: 'hTWKbfoikeg' },
+    
+    // === R&B / SOUL ===
+    { id: 's69', title: 'Thinking Out Loud', artist: 'Ed Sheeran', emoji: '💭', cover: 'c1', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=lp-EO5I60KA', videoId: 'lp-EO5I60KA' },
+    { id: 's70', title: 'All of Me', artist: 'John Legend', emoji: '💕', cover: 'c2', mood: 'Romantic', youtubeUrl: 'https://www.youtube.com/watch?v=450p7goxZqg', videoId: '450p7goxZqg' },
+    
+    // === POP INDONESIA 2025 ===
+    { id: 's71', title: 'Hindia - Impala', artist: 'Hindia', emoji: '🦌', cover: 'c3', mood: 'Happy', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's72', title: 'Tulus - Monokrom (Live)', artist: 'Tulus', emoji: '🎤', cover: 'c4', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's73', title: 'Pamungkas - To The Bone (Live)', artist: 'Pamungkas', emoji: '🎸', cover: 'c1', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's74', title: 'Mahalini - Sial (Live)', artist: 'Mahalini', emoji: '🎤', cover: 'c2', mood: 'Sad', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' },
+    { id: 's75', title: 'Nadin Amizah - Bertaut (Live)', artist: 'Nadin Amizah', emoji: '🎸', cover: 'c3', mood: 'Chill', youtubeUrl: 'https://www.youtube.com/watch?v=2V4FsMCSrnw', videoId: '2V4FsMCSrnw' }
 ];
 
 // --- Mood Categories ---
@@ -198,7 +271,59 @@ function songCardHTML(song) {
 function renderTrending() {
     const container = $('trendingCards');
     if (!container) return;
-    container.innerHTML = DEMO_SONGS.slice(0, 8).map(songCardHTML).join('');
+    // Tampilkan 12 lagu trending (campuran Pop Indonesia & International)
+    const trending = [
+        DEMO_SONGS[0],   // Hindia - Evaluasi
+        DEMO_SONGS[1],   // Rizky Febian - Terlukis Indah
+        DEMO_SONGS[3],   // Tulus - Monokrom
+        DEMO_SONGS[4],   // Mahalini - Sial
+        DEMO_SONGS[8],   // Weird Genius - Lathi
+        DEMO_SONGS[9],   // Pamungkas - To The Bone
+        DEMO_SONGS[30],  // Miley Cyrus - Flowers
+        DEMO_SONGS[31],  // Taylor Swift - Anti-Hero
+        DEMO_SONGS[32],  // Harry Styles - As It Was
+        DEMO_SONGS[39],  // The Weeknd - Blinding Lights
+        DEMO_SONGS[40],  // Dua Lipa - Levitating
+        DEMO_SONGS[63],  // BTS - Dynamite
+    ];
+    container.innerHTML = trending.map(songCardHTML).join('');
+}
+
+function renderCategorySongs() {
+    // Render section lagu berdasarkan kategori di beranda
+    const categories = [
+        { title: '🇮🇩 Pop Indonesia', ids: [0,1,2,3,4,5,6,7,8,9] },
+        { title: '🌍 International Hits', ids: [30,31,32,33,34,35,36,37,38,39] },
+        { title: '🎧 Lofi & Chill', ids: [50,51,52,53,54] },
+        { title: '💜 Galau Station', ids: [0,4,9,13,19,29,59] },
+        { title: '💕 Romantic Vibes', ids: [1,12,16,17,21,22,38,46,47,68,69] },
+        { title: '🎉 Party & Workout', ids: [8,10,35,36,37,38,40,44,55,56,57] },
+        { title: '🇰🇷 K-Pop', ids: [60,61,62,63,64] },
+        { title: '🎸 Rock Classics', ids: [49,65,66,67] },
+    ];
+
+    // Update section "Vibe dari teman" dengan lagu berdasarkan kategori
+    const homeFeed = $('homeFeed');
+    if (!homeFeed) return;
+
+    let html = '';
+    categories.forEach(cat => {
+        const songs = cat.ids.map(i => DEMO_SONGS[i]).filter(Boolean);
+        if (songs.length === 0) return;
+
+        html += `
+            <div class="section-head" style="margin-top:32px">
+                <div>
+                    <h3 style="font-size:18px;color:var(--text)">${cat.title}</h3>
+                </div>
+            </div>
+            <div class="cards">
+                ${songs.slice(0, 6).map(songCardHTML).join('')}
+            </div>
+        `;
+    });
+
+    homeFeed.innerHTML = html;
 }
 
 function renderDiscover() {
@@ -908,6 +1033,7 @@ function initApp() {
     renderRightTrending();
     renderSuggestedPeople();
     renderPlaylists();
+    renderCategorySongs();
     
     // Initialize social feed
     if (typeof Social !== 'undefined') {

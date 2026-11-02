@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+._*
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Config with API keys (user keeps local copy)
+# js/config.js is committed for GitHub Pages; use env vars in production
